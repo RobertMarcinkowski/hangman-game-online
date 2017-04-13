@@ -16,5 +16,6 @@ hs_err_pid*
 .classpath
 .project
 */target
+target
 mvnw
 mvnw.cmd
