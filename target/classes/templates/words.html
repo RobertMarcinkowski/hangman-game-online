@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8" />
+	<title>Hangman game</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	
+	
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<h1>Wyrazy</h1>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<hr/>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<table class="table table-striped">
+					<tr>
+						<th>słowo</th>
+						<th>liczba prób</th>
+					</tr>
+					<tr th:each="hangmanWord : ${wordsList}">
+						<td th:text="${hangmanWord.word}">słowo</td>
+						<td th:text="${hangmanWord.attempts}">liczba prób</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		
+		<hr/>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<form id="addWord" class="form-signin" th:object="${addWord}" method="post">
+					<label for="inputWord">Dodaj nowy wyraz: </label>
+                	<input type="text" class="form-control" id="inputWord" th:field="*{word}"/>
+                	<label for="inputAttempts">Podaj liczbę prób: </label>
+                	<input type="number" class="form-control" id="inputAttempts" th:field="*{attempts}"/>
+					<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+				</form>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	<!-- </div> -->
+		
+		<hr/>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<a href="/run"><button type="button" class="btn btn-lg btn-primary">Start</button></a>
+				<a href="/words"><button type="button" class="btn btn-lg btn-primary">Wyrazy</button></a>
+				<a href="/ranking"><button type="button" class="btn btn-lg btn-primary">Ranking</button></a>
+	
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+</body>
+</html>
